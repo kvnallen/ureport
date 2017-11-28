@@ -1,0 +1,7 @@
+<h1>Running Script</h1>
+<hr>
+ <div class="actions">
+    <%= link_to 'Gerar Relatório', script_path(:id => @script, :run => true, :format => 'csv')%>
+  </div>
+
+<%= link_to 'Back', scripts_path %>
