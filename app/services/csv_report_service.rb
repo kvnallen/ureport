@@ -3,12 +3,13 @@ require "csv"
 class CsvReportService
 
   def initialize(script)
-    @command = Script.safe_sql(script.command, '201713')
+    p = { period: 1, name: 2 }
+    @command = Script.safe_sql(script.command, p)
   end
 
   def perform
     results = ActiveRecord::Base.connection.select_all(@command)
-    to_csv(results, results[0].keys) if results.present?
+    to_csv(results, results.first.keys) if results.present?
   end
 
   def to_csv (all, attributes)    
@@ -16,12 +17,9 @@ class CsvReportService
         csv << attributes
     
         all.each do |user|
-          csv << attributes.map do |attr|
-             user[attr]
-          end
+          csv << attributes.map { |attr| user[attr] } 
         end       
     end
-
   end
 
 end

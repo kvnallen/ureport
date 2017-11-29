@@ -4,4 +4,9 @@ class Script < ApplicationRecord
 		self.sanitize_sql_array([command, params]) 
 	end
 
+	def all_params	
+		self.command.scan /(:.\w+)/
+	end
+
+
 end

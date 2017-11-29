@@ -5,8 +5,10 @@ class ScriptTest < ActiveSupport::TestCase
   #   assert true
   # end
 
-  	test "should has one param" do
-  		assert_equal (2, subject.params)
-  	end
+  
+
+  it "should has one param" do
+    subject.params.count eq 2
+  end
 
 end
