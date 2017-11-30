@@ -83,6 +83,6 @@ class ScriptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def script_params
-      params.require(:script).permit(:command)
+      params.require(:script).permit(:command, :name, :description)
     end
 end

@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Command:</strong>
-  <%= @script.command %>
-</p>
+<p>Command</p>
+<pre>
+   <%= @script.command %>
+   </pre>
 
 
-<%= link_to 'Edit', edit_script_path(@script) %> |
-<%= link_to 'Back', scripts_path %>
+<%= link_to 'Editar', edit_script_path(@script) %> |
+<%= link_to 'Voltar', scripts_path %>
