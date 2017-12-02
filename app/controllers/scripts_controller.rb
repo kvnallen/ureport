@@ -11,7 +11,7 @@ class ScriptsController < ApplicationController
   # GET /scripts/1.json
   def show
     
-    @results = CsvReportService.new(@script).perform
+    @results = CsvReportService.new(@script, params[:script]).perform
     if not @results.present?
       redirect_to scripts_url, notice: 'Não há dados para serem exibidos'
     else
@@ -24,6 +24,8 @@ class ScriptsController < ApplicationController
   end
 
   def run
+    puts "Screen Parameters..."
+    puts @script.all_params
   end
 
   # GET /scripts/new

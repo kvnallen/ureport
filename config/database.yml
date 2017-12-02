@@ -4,11 +4,23 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
+# default: &default
+#   adapter: oracle_enhanced
+#   pool: 5
+#   timeout: 5000
+#   schema: ureport
+
+# default: &default
+#   adapter: oracle_enhanced
+#   pool: 5
+#   timeout: 5000
+#   schema: ureport
+
 default: &default
-  adapter: oracle_enhanced
+  adapter: sqlite3
+  database: db/development.sqlite3
   pool: 5
   timeout: 5000
-  schema: ureport
   
 development:
   <<: *default
@@ -21,7 +33,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: infotest
+  database: db/test.sqlite3
   username: ureport
   password: ureport
 

@@ -2,9 +2,14 @@ require "csv"
 
 class CsvReportService
 
-  def initialize(script)
-    p = { period: 1, name: 2 }
-    @command = Script.safe_sql(script.command, p)
+  def initialize(script, params)
+    @command = Script.safe_sql(script.command, params_to_hash(params))
+    puts "--------- sanitized commmand --------- "
+    puts @command
+  end
+
+  def params_to_hash (params)
+    Hash[params.map{ |k, v| [k.to_sym, v] }] if params.present?
   end
 
   def perform
