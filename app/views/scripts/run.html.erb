@@ -1,21 +1,27 @@
-<h1>Runnixng Script</h1>
+<h1><%=@script.name%></h1>
+
+<% if not @script.description.empty? %>
+	<pre>
+		<%=@script.description%>
+	</pre>
+<% end %>
 
 <%= form_for(@script, :url => url_for(:controller => 'scripts', :action => 'show', format: :csv), :html => { :method => :get }) do |f| %>
 	<hr>
 	  <% @script.all_params.each do |p| %>
 
 		<div class="field">
-		    <%= f.label p %>
-		    <%= f.text_field p %>
+			<label><%=p.gsub '_', ' ' %></label>
+				<input type="text" id="script[<%=p%>]" name="script[<%=p%>]" >
 		 </div>
 
 	<% end %>
 
 	<div class="actions">
-		 <%= f.submit %>
+		 <%= f.submit "Gerar Relatório" %>
 	    
 	</div>
 
 <% end %>
 
-<%= link_to 'Back', scripts_path %>
+<%= link_to 'Voltar', scripts_path %>

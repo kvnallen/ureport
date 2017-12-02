@@ -58,7 +58,7 @@ class ScriptsController < ApplicationController
   def update
     respond_to do |format|
       if @script.update(script_params)
-        format.html { redirect_to @script, notice: 'Script was successfully updated.' }
+        format.html { redirect_to action: 'index', notice: 'Script was successfully updated.' }
         format.json { render :show, status: :ok, location: @script }
       else
         format.html { render :edit }
