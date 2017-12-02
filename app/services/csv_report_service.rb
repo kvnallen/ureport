@@ -4,8 +4,6 @@ class CsvReportService
 
   def initialize(script, params)
     @command = Script.safe_sql(script.command, params_to_hash(params))
-    puts "--------- sanitized commmand --------- "
-    puts @command
   end
 
   def params_to_hash (params)
